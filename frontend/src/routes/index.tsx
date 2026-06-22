@@ -7,7 +7,7 @@ import { useProfile, seedNotifications } from "@/lib/bmi-store";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "BMI Pulse — Animated the BMI tracker" },
+      { title: "BMI Pulse — Animated BMI tracker" },
       { name: "description", content: "Colorful, animated BMI calculator with goals, charts and tips." },
     ],
   }),
