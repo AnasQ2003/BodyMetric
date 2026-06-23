@@ -31,9 +31,9 @@ function AuthPage() {
         name: profile.name || form.email.split("@")[0] || "Friend",
         email: form.email,
         authed: true,
-        onboarded: profile.onboarded,
+        onboarded: true,
       });
-      navigate({ to: profile.onboarded ? "/home" : "/onboarding" });
+      navigate({ to: "/home" });
     }
   };
 
