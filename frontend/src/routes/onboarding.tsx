@@ -50,7 +50,7 @@ function Onboarding() {
   const Icon = steps[step].icon;
 
   return (
-    <div className="relative min-h-dvh overflow-hidden bg-background">
+    <div className="relative h-full overflow-hidden bg-background">
       {/* Animated themed background */}
       <AnimatePresence mode="sync">
         <motion.div
@@ -99,7 +99,7 @@ function Onboarding() {
         ))}
       </div>
 
-      <div className="mx-auto flex min-h-dvh max-w-md flex-col px-5 pt-10 pb-6">
+      <div className="mx-auto flex h-full max-w-md flex-col px-5 pt-12 pb-8">
         {/* Progress dots */}
         <div className="flex gap-1.5">
           {steps.map((_, i) => (

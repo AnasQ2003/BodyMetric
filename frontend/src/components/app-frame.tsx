@@ -59,7 +59,7 @@ export function AppFrame({ children }: { children: ReactNode }) {
   } as React.CSSProperties;
 
   return (
-    <div className="relative h-dvh w-full overflow-hidden transition-colors duration-700" style={dynStyle}>
+    <div className="relative h-full w-full overflow-hidden transition-colors duration-700" style={dynStyle}>
       <div className="absolute inset-0 -z-10 bg-background transition-colors duration-700" />
       {/* Soft cooling gradient wash across the whole app */}
       <div
@@ -83,8 +83,8 @@ export function AppFrame({ children }: { children: ReactNode }) {
           style={{ background: theme.c, animationDelay: "4s" }} />
       </div>
 
-      <div className="mx-auto grid h-dvh w-full max-w-md grid-rows-[auto_1fr_auto]">
-        <header className="z-30 px-4 pt-4">
+      <div className="mx-auto grid h-full w-full max-w-md grid-rows-[auto_1fr_auto]">
+        <header className="z-30 px-4 pt-6">
           <motion.div layout className="glass relative flex items-center justify-between rounded-2xl px-3 py-2.5 shadow-glow ring-1 ring-white/40 overflow-hidden">
             <span aria-hidden className="pointer-events-none absolute inset-0 rounded-2xl"
               style={{ boxShadow: `inset 0 1px 0 rgba(255,255,255,0.6), inset 0 0 24px color-mix(in oklab, ${theme.ring} 32%, transparent)` }} />
@@ -135,7 +135,7 @@ export function AppFrame({ children }: { children: ReactNode }) {
           </AnimatePresence>
         </main>
 
-        <nav className="relative z-30 px-3 pb-3 pt-1">
+        <nav className="relative z-30 px-3 pb-4 pt-1">
           <motion.span aria-hidden className="pointer-events-none absolute inset-x-2 bottom-2 top-1 rounded-[28px] blur-xl opacity-60"
             style={{ background: `linear-gradient(90deg, ${theme.a}, ${theme.b}, ${theme.c})` }}
             animate={{ opacity: [0.35, 0.7, 0.35] }} transition={{ duration: 4, repeat: Infinity }} />

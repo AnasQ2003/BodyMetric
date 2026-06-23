@@ -38,14 +38,14 @@ function AuthPage() {
   };
 
   return (
-    <div className="relative min-h-dvh overflow-hidden bg-gradient-brand text-white">
+    <div className="relative h-full overflow-hidden bg-gradient-brand text-white">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-20 -left-10 h-80 w-80 rounded-full bg-white/20 blur-3xl animate-blob" />
         <div className="absolute top-1/3 -right-10 h-72 w-72 rounded-full bg-fuchsia-400/30 blur-3xl animate-blob" style={{ animationDelay: "2s" }} />
         <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-300/25 blur-3xl animate-blob" style={{ animationDelay: "4s" }} />
       </div>
 
-      <div className="relative mx-auto flex min-h-dvh max-w-md flex-col px-6 pt-12 pb-8">
+      <div className="relative mx-auto flex h-full max-w-md flex-col px-6 pt-12 pb-8">
         <motion.div initial={{ scale: 0, rotate: -90 }} animate={{ scale: 1, rotate: 0 }}
           transition={{ type: "spring", stiffness: 200, damping: 14 }}
           className="mx-auto grid h-20 w-20 place-items-center rounded-3xl bg-white/20 backdrop-blur-xl shadow-glow">

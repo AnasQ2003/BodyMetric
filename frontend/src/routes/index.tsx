@@ -40,7 +40,7 @@ function Splash() {
   const phase = progress < 33 ? "Warming up the engine" : progress < 66 ? "Loading your health profile" : "Almost ready ✨";
 
   return (
-    <div className="relative grid min-h-dvh place-items-center overflow-hidden bg-gradient-brand text-white">
+    <div className="relative grid h-full place-items-center overflow-hidden bg-gradient-brand text-white">
       <div className="absolute inset-0">
         <div className="absolute -top-20 -left-10 h-80 w-80 rounded-full bg-white/20 blur-3xl animate-blob" />
         <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-white/15 blur-3xl animate-blob" style={{ animationDelay: "2s" }} />
