@@ -166,14 +166,14 @@ export function AppFrame({ children }: { children: ReactNode }) {
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             onClick={() => setDrawer(false)}
-            className="fixed inset-0 z-50 grid place-items-center bg-foreground/55 backdrop-blur-md p-5">
+            className="fixed inset-0 z-50 grid place-items-center bg-foreground/55 backdrop-blur-md p-4">
             <motion.div
               onClick={(e) => e.stopPropagation()}
               initial={{ scale: 0.4, opacity: 0, y: -80, rotate: -6 }}
               animate={{ scale: 1, opacity: 1, y: 0, rotate: 0 }}
               exit={{ scale: 0.5, opacity: 0, y: -60, rotate: 4 }}
               transition={{ type: "spring", stiffness: 260, damping: 22 }}
-              className="w-full max-w-sm overflow-hidden rounded-3xl bg-card shadow-glow max-h-[85vh] flex flex-col">
+              className="w-full max-w-[360px] overflow-hidden rounded-3xl bg-card shadow-glow max-h-[80vh] flex flex-col">
               <div className={`relative p-5 text-white ${cat.gradient}`}>
                 <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/20 blur-2xl" />
                 <button onClick={() => setDrawer(false)}
