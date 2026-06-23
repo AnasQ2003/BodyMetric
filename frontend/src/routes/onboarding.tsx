@@ -100,8 +100,27 @@ function Onboarding() {
       </div>
 
       <div className="mx-auto flex h-full max-w-md flex-col px-5 pt-12 pb-8">
+        {/* Top navigation bar */}
+        <div className="flex items-center justify-between">
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={back}
+            className="grid h-10 w-10 place-items-center rounded-xl bg-secondary text-secondary-foreground shadow-soft"
+            disabled={step === 0}
+          >
+            <ArrowLeft className="h-5 w-5" />
+          </motion.button>
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={() => navigate({ to: "/auth" })}
+            className="text-xs font-semibold text-muted-foreground hover:text-foreground transition"
+          >
+            Skip to login
+          </motion.button>
+        </div>
+
         {/* Progress dots */}
-        <div className="flex gap-1.5">
+        <div className="mt-4 flex gap-1.5">
           {steps.map((_, i) => (
             <div key={i} className="h-1.5 flex-1 overflow-hidden rounded-full bg-secondary/60 backdrop-blur">
               <motion.div
@@ -116,7 +135,7 @@ function Onboarding() {
         </div>
 
         {/* Header */}
-        <div className="mt-8 flex items-center gap-3">
+        <div className="mt-4 flex items-center gap-3">
           <motion.div
             key={step}
             initial={{ scale: 0, rotate: -180 }}
@@ -157,7 +176,7 @@ function Onboarding() {
         </div>
 
         {/* Step body */}
-        <div className="relative mt-8 flex-1">
+        <div className="relative mt-4 flex-1">
           <AnimatePresence mode="wait" custom={dir}>
             <motion.div
               key={step}
@@ -341,18 +360,7 @@ function Onboarding() {
         </div>
 
         {/* Nav buttons */}
-        <div className="mt-6 flex gap-3">
-          {step > 0 && (
-            <motion.button
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={back}
-              className="grid h-14 w-14 place-items-center rounded-2xl bg-card shadow-soft"
-            >
-              <ArrowLeft className="h-5 w-5" />
-            </motion.button>
-          )}
+        <div className="mt-4 flex gap-3">
           <motion.button
             whileTap={{ scale: 0.97 }}
             whileHover={{ scale: 1.02 }}
