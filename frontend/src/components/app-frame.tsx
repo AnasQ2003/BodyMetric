@@ -83,7 +83,7 @@ export function AppFrame({ children }: { children: ReactNode }) {
           style={{ background: theme.c, animationDelay: "4s" }} />
       </div>
 
-      <div className="mx-auto grid h-full w-full max-w-md grid-rows-[auto_1fr_auto]">
+      <div className="mx-auto grid h-full w-full max-w-[calc(100%-32px)] grid-rows-[auto_1fr_auto] relative">
         <header className="z-30 px-4 pt-6">
           <motion.div layout className="glass relative flex items-center justify-between rounded-2xl px-3 py-2.5 shadow-glow ring-1 ring-white/40 overflow-hidden">
             <span aria-hidden className="pointer-events-none absolute inset-0 rounded-2xl"
@@ -166,31 +166,31 @@ export function AppFrame({ children }: { children: ReactNode }) {
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             onClick={() => setDrawer(false)}
-            className="fixed inset-0 z-50 grid place-items-center bg-foreground/55 backdrop-blur-md p-4">
+            className="absolute inset-0 z-50 grid place-items-center bg-foreground/55 backdrop-blur-md overflow-hidden">
             <motion.div
               onClick={(e) => e.stopPropagation()}
               initial={{ scale: 0.4, opacity: 0, y: -80, rotate: -6 }}
               animate={{ scale: 1, opacity: 1, y: 0, rotate: 0 }}
               exit={{ scale: 0.5, opacity: 0, y: -60, rotate: 4 }}
               transition={{ type: "spring", stiffness: 260, damping: 22 }}
-              className="w-full max-w-[360px] overflow-hidden rounded-3xl bg-card shadow-glow max-h-[80vh] flex flex-col">
-              <div className={`relative p-5 text-white ${cat.gradient}`}>
+              className="w-[65%] overflow-hidden rounded-3xl bg-card shadow-glow max-h-[60vh] flex flex-col">
+              <div className={`relative p-3 text-white ${cat.gradient}`}>
                 <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/20 blur-2xl" />
                 <button onClick={() => setDrawer(false)}
-                  className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/25 active:scale-95">
-                  <X className="h-4 w-4" />
+                  className="absolute right-2 top-2 grid h-8 w-8 place-items-center rounded-full bg-white/25 active:scale-95">
+                  <X className="h-3.5 w-3.5" />
                 </button>
-                <div className="flex items-center gap-3">
-                  <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white/25 backdrop-blur">
-                    <Activity className="h-6 w-6" />
+                <div className="flex items-center gap-2">
+                  <div className="grid h-10 w-10 place-items-center rounded-2xl bg-white/25 backdrop-blur">
+                    <Activity className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="text-xs uppercase tracking-widest opacity-85">Hello {profile.name || "friend"}</p>
-                    <p className="font-display text-xl font-bold">Quick menu</p>
+                    <p className="text-[10px] uppercase tracking-widest opacity-85">Hello {profile.name || "friend"}</p>
+                    <p className="font-display text-lg font-bold">Quick menu</p>
                   </div>
                 </div>
               </div>
-              <div className="p-4 space-y-2 overflow-y-auto">
+              <div className="p-3 space-y-2 overflow-y-auto">
                 {[
                   { to: "/home", icon: Home, label: "Dashboard", grad: "bg-gradient-brand" },
                   { to: "/calculator", icon: Calculator, label: "Full calculator", grad: "bg-gradient-ocean" },
@@ -206,12 +206,12 @@ export function AppFrame({ children }: { children: ReactNode }) {
                     initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.03 }}
                     onClick={() => { setDrawer(false); navigate({ to: m.to as any }); }}
-                    className="flex w-full items-center gap-3 rounded-2xl bg-secondary p-2.5 text-left active:scale-[0.98] transition">
-                    <span className={`grid h-9 w-9 place-items-center rounded-xl text-white shadow-soft ${m.grad}`}>
-                      <m.icon className="h-4 w-4" />
+                    className="flex w-full items-center gap-2 rounded-2xl bg-secondary p-2 text-left active:scale-[0.98] transition">
+                    <span className={`grid h-8 w-8 place-items-center rounded-xl text-white shadow-soft ${m.grad}`}>
+                      <m.icon className="h-3.5 w-3.5" />
                     </span>
-                    <span className="flex-1 font-display font-bold text-sm">{m.label}</span>
-                    <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                    <span className="flex-1 font-display font-bold text-xs">{m.label}</span>
+                    <ChevronRight className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
                   </motion.button>
                 ))}
                 <button onClick={() => { update({ authed: false }); setDrawer(false); navigate({ to: "/auth" }); }}
