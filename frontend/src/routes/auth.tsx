@@ -45,7 +45,7 @@ function AuthPage() {
         <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-300/25 blur-3xl animate-blob" style={{ animationDelay: "4s" }} />
       </div>
 
-      <div className="relative mx-auto flex h-full max-w-md flex-col px-6 pt-12 pb-8">
+      <div className="relative mx-auto flex h-full max-w-md flex-col px-6 pt-12 pb-10">
         <motion.div initial={{ scale: 0, rotate: -90 }} animate={{ scale: 1, rotate: 0 }}
           transition={{ type: "spring", stiffness: 200, damping: 14 }}
           className="mx-auto grid h-20 w-20 place-items-center rounded-3xl bg-white/20 backdrop-blur-xl shadow-glow">
