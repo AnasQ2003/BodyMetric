@@ -74,17 +74,6 @@ function AuthPage() {
           ))}
         </motion.div>
 
-        {/* Trust strip */}
-        <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.7 }}
-          className="mt-4 flex items-center justify-around rounded-2xl bg-white/10 backdrop-blur border border-white/15 p-3 text-center">
-          {[{ n: "12k+", l: "Users" }, { n: "4.9★", l: "Rating" }, { n: "100%", l: "Private" }].map((s) => (
-            <div key={s.l}>
-              <p className="font-display font-black text-lg">{s.n}</p>
-              <p className="text-[10px] uppercase tracking-wider text-white/70">{s.l}</p>
-            </div>
-          ))}
-        </motion.div>
-
         {/* Live BMI preview ticker — interactive teaser */}
         <LivePreview />
 
