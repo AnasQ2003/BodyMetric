@@ -30,9 +30,7 @@ function Splash() {
       if (p >= 100) clearInterval(id);
     }, 30);
     const t = setTimeout(() => {
-      if (profile.authed && profile.onboarded) navigate({ to: "/home" });
-      else if (profile.authed && !profile.onboarded) navigate({ to: "/onboarding" });
-      else navigate({ to: "/auth" });
+      navigate({ to: "/auth" });
     }, DURATION);
     return () => { clearTimeout(t); clearInterval(id); };
   }, [navigate, profile]);
