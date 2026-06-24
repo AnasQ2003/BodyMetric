@@ -126,7 +126,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Mobile frame wrapper for desktop view */}
       <div className="flex min-h-dvh items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 p-4 md:p-8">
-        <div className="relative h-full w-full max-w-md rounded-[2.5rem] border-8 border-slate-900 bg-background shadow-2xl md:h-[850px]">
+        <div className="relative h-full w-full max-w-md overflow-hidden rounded-[2.5rem] border-8 border-slate-900 bg-background shadow-2xl md:h-[850px]">
           {/* Phone notch/camera */}
           <div className="absolute left-1/2 top-0 z-50 h-7 w-32 -translate-x-1/2 rounded-b-2xl border-x-2 border-b-2 border-slate-900 bg-slate-900" />
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}

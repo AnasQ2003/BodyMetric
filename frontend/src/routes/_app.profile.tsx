@@ -1,7 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMemo, useState } from "react";
-import { createPortal } from "react-dom";
 import { useProfile, useHistory, useActivities, bmiCategory, calcBMI, suggestGoalWeight } from "@/lib/bmi-store";
 import { Edit3, Award, Flame, Target, X, Check, LogOut, Trophy, Zap, Heart, Calendar, Sparkles, ArrowRight } from "lucide-react";
 
@@ -178,23 +177,22 @@ function ProfilePage() {
       </button>
 
       {/* Edit modal */}
-      {createPortal(
-        <AnimatePresence>
-          {edit && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              onClick={() => setEdit(false)}
-              className="fixed inset-0 z-[100000] grid place-items-center bg-black/60 backdrop-blur-sm p-4">
-              <motion.div onClick={(e) => e.stopPropagation()}
-                initial={{ scale: 0.6, opacity: 0, y: 40 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.7, opacity: 0, y: 30 }}
-                transition={{ type: "spring", stiffness: 240, damping: 20 }}
-                className="w-full max-w-sm rounded-3xl bg-card shadow-2xl max-h-[85vh] overflow-y-auto border-2 border-primary">
-              <div className="relative bg-gradient-brand p-5 text-white sticky top-0 z-10 rounded-t-3xl">
+      <AnimatePresence>
+        {edit && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            onClick={() => setEdit(false)}
+            className="absolute inset-0 z-50 grid place-items-center bg-black/60 backdrop-blur-sm p-3 overflow-hidden">
+            <motion.div onClick={(e) => e.stopPropagation()}
+              initial={{ scale: 0.6, opacity: 0, y: 40 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.7, opacity: 0, y: 30 }}
+              transition={{ type: "spring", stiffness: 240, damping: 20 }}
+              className="w-[85%] rounded-3xl bg-card shadow-2xl max-h-[80vh] overflow-y-auto border-2 border-primary">
+              <div className="relative bg-gradient-brand p-4 text-white sticky top-0 z-10 rounded-t-3xl">
                 <button onClick={() => setEdit(false)}
-                  className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/20"><X className="h-4 w-4" /></button>
-                <p className="font-display text-xl font-bold">Edit profile</p>
+                  className="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-full bg-white/20"><X className="h-4 w-4" /></button>
+                <p className="font-display text-lg font-bold">Edit profile</p>
                 <p className="text-xs opacity-90">Tap save — your changes apply instantly.</p>
               </div>
-              <div className="space-y-3 p-5">
+              <div className="space-y-3 p-4">
                 <F l="Name" v={draft.name} on={(v: string) => setDraft({ ...draft, name: v })} />
                 <F l="Email" v={draft.email} on={(v: string) => setDraft({ ...draft, email: v })} />
                 <div className="grid grid-cols-2 gap-3">
@@ -238,16 +236,14 @@ function ProfilePage() {
                     className="w-full mt-1 accent-primary" />
                 </div>
                 <button onClick={saveEdit}
-                  className="mt-1 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-brand py-3.5 font-display font-bold text-white shadow-glow">
+                  className="mt-1 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-brand py-3 font-display font-bold text-white shadow-glow">
                   <Check className="h-5 w-5" /> Save changes
                 </button>
               </div>
             </motion.div>
           </motion.div>
         )}
-      </AnimatePresence>,
-      document.body
-      )}
+      </AnimatePresence>
     </div>
   );
 }

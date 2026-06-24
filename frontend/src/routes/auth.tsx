@@ -108,14 +108,14 @@ function AuthPage() {
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             onClick={() => setMode(null)}
-            className="fixed inset-0 z-50 grid place-items-center bg-foreground/50 backdrop-blur-md p-5">
+            className="absolute inset-0 z-50 grid place-items-center bg-foreground/50 backdrop-blur-md p-3 overflow-hidden">
             <motion.div
               onClick={(e) => e.stopPropagation()}
               initial={{ scale: 0.5, opacity: 0, y: 60, rotate: -4 }}
               animate={{ scale: 1, opacity: 1, y: 0, rotate: 0 }}
               exit={{ scale: 0.6, opacity: 0, y: 40, rotate: 4 }}
               transition={{ type: "spring", stiffness: 240, damping: 20 }}
-              className="w-full max-w-sm overflow-hidden rounded-3xl bg-card text-foreground shadow-glow">
+              className="w-[85%] overflow-hidden rounded-3xl bg-card text-foreground shadow-glow">
               <div className="relative bg-gradient-brand p-5 text-white">
                 <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/20 blur-2xl" />
                 <button onClick={() => setMode(null)}
@@ -240,12 +240,12 @@ function InfoModal({ kind, onClose }: { kind: "terms" | "privacy"; onClose: () =
     <motion.div
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
       onClick={onClose}
-      className="fixed inset-0 z-50 grid place-items-center bg-foreground/50 backdrop-blur-md p-5">
+      className="absolute inset-0 z-50 grid place-items-center bg-foreground/50 backdrop-blur-md p-3 overflow-hidden">
       <motion.div
         onClick={(e) => e.stopPropagation()}
         initial={{ scale: 0.5, opacity: 0, y: 60 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.6, opacity: 0, y: 40 }}
         transition={{ type: "spring", stiffness: 240, damping: 22 }}
-        className="w-full max-w-sm overflow-hidden rounded-3xl bg-card text-foreground shadow-glow max-h-[80vh] flex flex-col">
+        className="w-[85%] overflow-hidden rounded-3xl bg-card text-foreground shadow-glow max-h-[80vh] flex flex-col">
         <div className={`relative p-5 text-white ${isTerms ? "bg-gradient-sunset" : "bg-gradient-ocean"}`}>
           <button onClick={onClose}
             className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/25 active:scale-95">
