@@ -1,6 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { useProfile, useHistory, useActivities, bmiCategory, calcBMI, suggestGoalWeight } from "@/lib/bmi-store";
 import { Edit3, Award, Flame, Target, X, Check, LogOut, Trophy, Zap, Heart, Calendar, Sparkles, ArrowRight } from "lucide-react";
 
@@ -69,7 +70,7 @@ function ProfilePage() {
             <p className="text-xs opacity-80 mt-1">🎯 {profile.goal} · target {profile.targetWeight} kg</p>
           </div>
           <button onClick={() => { setDraft(profile); setEdit(true); }}
-            className="grid h-10 w-10 place-items-center rounded-xl bg-white/20 active:scale-95">
+            className="relative z-20 grid h-10 w-10 place-items-center rounded-xl bg-white/20 active:scale-95 cursor-pointer">
             <Edit3 className="h-4 w-4" />
           </button>
         </div>
@@ -177,15 +178,16 @@ function ProfilePage() {
       </button>
 
       {/* Edit modal */}
-      <AnimatePresence>
-        {edit && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            onClick={() => setEdit(false)}
-            className="fixed inset-0 z-[9999] grid place-items-center bg-foreground/40 backdrop-blur-md p-4">
-            <motion.div onClick={(e) => e.stopPropagation()}
-              initial={{ scale: 0.6, opacity: 0, y: 40 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.7, opacity: 0, y: 30 }}
-              transition={{ type: "spring", stiffness: 240, damping: 20 }}
-              className="w-full max-w-[320px] rounded-3xl bg-card shadow-glow max-h-[80vh] overflow-y-auto">
+      {createPortal(
+        <AnimatePresence>
+          {edit && (
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              onClick={() => setEdit(false)}
+              className="fixed inset-0 z-[100000] grid place-items-center bg-black/60 backdrop-blur-sm p-4">
+              <motion.div onClick={(e) => e.stopPropagation()}
+                initial={{ scale: 0.6, opacity: 0, y: 40 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.7, opacity: 0, y: 30 }}
+                transition={{ type: "spring", stiffness: 240, damping: 20 }}
+                className="w-full max-w-sm rounded-3xl bg-card shadow-2xl max-h-[85vh] overflow-y-auto border-2 border-primary">
               <div className="relative bg-gradient-brand p-5 text-white sticky top-0 z-10 rounded-t-3xl">
                 <button onClick={() => setEdit(false)}
                   className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/20"><X className="h-4 w-4" /></button>
@@ -243,7 +245,9 @@ function ProfilePage() {
             </motion.div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+      document.body
+      )}
     </div>
   );
 }
