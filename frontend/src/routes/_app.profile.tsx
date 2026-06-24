@@ -49,7 +49,7 @@ function ProfilePage() {
   };
 
   return (
-    <div className="space-y-5">
+    <div className="relative space-y-5">
       <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
         className={`relative overflow-hidden rounded-3xl p-6 text-white shadow-glow ${cat.gradient}`}>
         <div className="absolute -right-10 -top-10 h-44 w-44 rounded-full bg-white/15 blur-2xl animate-blob" />
@@ -181,11 +181,11 @@ function ProfilePage() {
         {edit && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             onClick={() => setEdit(false)}
-            className="absolute inset-0 z-50 grid place-items-center bg-foreground/40 backdrop-blur-md p-2 overflow-hidden">
+            className="fixed inset-0 z-[9999] grid place-items-center bg-foreground/40 backdrop-blur-md p-4">
             <motion.div onClick={(e) => e.stopPropagation()}
               initial={{ scale: 0.6, opacity: 0, y: 40 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.7, opacity: 0, y: 30 }}
               transition={{ type: "spring", stiffness: 240, damping: 20 }}
-              className="w-[85%] rounded-3xl bg-card shadow-glow max-h-[80vh] overflow-y-auto">
+              className="w-full max-w-[320px] rounded-3xl bg-card shadow-glow max-h-[80vh] overflow-y-auto">
               <div className="relative bg-gradient-brand p-5 text-white sticky top-0 z-10 rounded-t-3xl">
                 <button onClick={() => setEdit(false)}
                   className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/20"><X className="h-4 w-4" /></button>

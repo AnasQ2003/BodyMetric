@@ -173,24 +173,24 @@ export function AppFrame({ children }: { children: ReactNode }) {
               animate={{ scale: 1, opacity: 1, y: 0, rotate: 0 }}
               exit={{ scale: 0.5, opacity: 0, y: -60, rotate: 4 }}
               transition={{ type: "spring", stiffness: 260, damping: 22 }}
-              className="w-[65%] overflow-hidden rounded-3xl bg-card shadow-glow max-h-[60vh] flex flex-col">
-              <div className={`relative p-3 text-white ${cat.gradient}`}>
+              className="w-[85%] overflow-hidden rounded-3xl bg-card shadow-glow max-h-[70vh] flex flex-col">
+              <div className={`relative p-4 text-white ${cat.gradient}`}>
                 <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/20 blur-2xl" />
                 <button onClick={() => setDrawer(false)}
-                  className="absolute right-2 top-2 grid h-8 w-8 place-items-center rounded-full bg-white/25 active:scale-95">
-                  <X className="h-3.5 w-3.5" />
+                  className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/25 active:scale-95">
+                  <X className="h-4 w-4" />
                 </button>
-                <div className="flex items-center gap-2">
-                  <div className="grid h-10 w-10 place-items-center rounded-2xl bg-white/25 backdrop-blur">
-                    <Activity className="h-5 w-5" />
+                <div className="flex items-center gap-3">
+                  <div className="grid h-12 w-12 place-items-center rounded-2xl bg-white/25 backdrop-blur">
+                    <Activity className="h-6 w-6" />
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase tracking-widest opacity-85">Hello {profile.name || "friend"}</p>
-                    <p className="font-display text-lg font-bold">Quick menu</p>
+                    <p className="text-xs uppercase tracking-widest opacity-85">Hello {profile.name || "friend"}</p>
+                    <p className="font-display text-xl font-bold">Quick menu</p>
                   </div>
                 </div>
               </div>
-              <div className="p-3 space-y-2 overflow-y-auto">
+              <div className="p-4 space-y-2 overflow-y-auto">
                 {[
                   { to: "/home", icon: Home, label: "Dashboard", grad: "bg-gradient-brand" },
                   { to: "/calculator", icon: Calculator, label: "Full calculator", grad: "bg-gradient-ocean" },
@@ -206,12 +206,12 @@ export function AppFrame({ children }: { children: ReactNode }) {
                     initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.03 }}
                     onClick={() => { setDrawer(false); navigate({ to: m.to as any }); }}
-                    className="flex w-full items-center gap-2 rounded-2xl bg-secondary p-2 text-left active:scale-[0.98] transition">
-                    <span className={`grid h-8 w-8 place-items-center rounded-xl text-white shadow-soft ${m.grad}`}>
-                      <m.icon className="h-3.5 w-3.5" />
+                    className="flex w-full items-center gap-3 rounded-2xl bg-secondary p-3 text-left active:scale-[0.98] transition">
+                    <span className={`grid h-10 w-10 place-items-center rounded-xl text-white shadow-soft ${m.grad}`}>
+                      <m.icon className="h-5 w-5" />
                     </span>
-                    <span className="flex-1 font-display font-bold text-xs">{m.label}</span>
-                    <ChevronRight className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+                    <span className="flex-1 font-display font-bold text-sm">{m.label}</span>
+                    <ChevronRight className="h-4 w-4 text-muted-foreground shrink-0" />
                   </motion.button>
                 ))}
                 <button onClick={() => { update({ authed: false }); setDrawer(false); navigate({ to: "/auth" }); }}
