@@ -1,8 +1,29 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMemo, useState } from "react";
-import { useProfile, useHistory, useActivities, bmiCategory, calcBMI, suggestGoalWeight } from "@/lib/bmi-store";
-import { Edit3, Award, Flame, Target, X, Check, LogOut, Trophy, Zap, Heart, Calendar, Sparkles, ArrowRight } from "lucide-react";
+import {
+  useProfile,
+  useHistory,
+  useActivities,
+  bmiCategory,
+  calcBMI,
+  suggestGoalWeight,
+} from "@/lib/bmi-store";
+import {
+  Edit3,
+  Award,
+  Flame,
+  Target,
+  X,
+  Check,
+  LogOut,
+  Trophy,
+  Zap,
+  Heart,
+  Calendar,
+  Sparkles,
+  ArrowRight,
+} from "lucide-react";
 
 export const Route = createFileRoute("/_app/profile")({ component: ProfilePage });
 
@@ -27,18 +48,58 @@ function ProfilePage() {
   }, [acts, items, profile.weight]);
 
   const achievements = [
-    { id: "first", icon: Sparkles, label: "First log", unlocked: items.length >= 1, grad: "bg-gradient-brand" },
-    { id: "five", icon: Flame, label: "5 logs", unlocked: items.length >= 5, grad: "bg-gradient-fire" },
-    { id: "streak", icon: Zap, label: "3-day streak", unlocked: stats.days >= 3, grad: "bg-gradient-sunset" },
-    { id: "active", icon: Trophy, label: "100 active min", unlocked: stats.totalMin >= 100, grad: "bg-gradient-mint" },
-    { id: "healthy", icon: Heart, label: "Healthy zone", unlocked: cat.key === "healthy", grad: "bg-gradient-ocean" },
-    { id: "loyal", icon: Award, label: "10 logs", unlocked: items.length >= 10, grad: cat.gradient },
+    {
+      id: "first",
+      icon: Sparkles,
+      label: "First log",
+      unlocked: items.length >= 1,
+      grad: "bg-gradient-brand",
+    },
+    {
+      id: "five",
+      icon: Flame,
+      label: "5 logs",
+      unlocked: items.length >= 5,
+      grad: "bg-gradient-fire",
+    },
+    {
+      id: "streak",
+      icon: Zap,
+      label: "3-day streak",
+      unlocked: stats.days >= 3,
+      grad: "bg-gradient-sunset",
+    },
+    {
+      id: "active",
+      icon: Trophy,
+      label: "100 active min",
+      unlocked: stats.totalMin >= 100,
+      grad: "bg-gradient-mint",
+    },
+    {
+      id: "healthy",
+      icon: Heart,
+      label: "Healthy zone",
+      unlocked: cat.key === "healthy",
+      grad: "bg-gradient-ocean",
+    },
+    {
+      id: "loyal",
+      icon: Award,
+      label: "10 logs",
+      unlocked: items.length >= 10,
+      grad: cat.gradient,
+    },
   ];
 
   const journey = items.slice(0, 5);
 
   const saveEdit = () => {
-    const target = suggestGoalWeight({ height: draft.height, goal: draft.goal, weight: draft.weight });
+    const target = suggestGoalWeight({
+      height: draft.height,
+      goal: draft.goal,
+      weight: draft.weight,
+    });
     update({ ...draft, targetWeight: target });
     setEdit(false);
   };
@@ -50,26 +111,45 @@ function ProfilePage() {
 
   return (
     <div className="relative space-y-5">
-      <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
-        className={`relative overflow-hidden rounded-3xl p-6 text-white shadow-glow ${cat.gradient}`}>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className={`relative overflow-hidden rounded-3xl p-6 text-white shadow-glow ${cat.gradient}`}
+      >
         <div className="absolute -right-10 -top-10 h-44 w-44 rounded-full bg-white/15 blur-2xl animate-blob" />
         <div className="flex items-center gap-4">
-          <motion.div initial={{ rotate: -180, scale: 0 }} animate={{ rotate: 0, scale: 1 }}
+          <motion.div
+            initial={{ rotate: -180, scale: 0 }}
+            animate={{ rotate: 0, scale: 1 }}
             transition={{ type: "spring", stiffness: 200, damping: 14 }}
             className="grid h-20 w-20 place-items-center rounded-3xl text-white shadow-glow relative overflow-hidden"
-            style={{ background: `linear-gradient(135deg, oklch(0.7 0.22 ${profile.avatarHue}), oklch(0.78 0.18 ${(profile.avatarHue + 80) % 360}))` }}>
+            style={{
+              background: `linear-gradient(135deg, oklch(0.7 0.22 ${profile.avatarHue}), oklch(0.78 0.18 ${(profile.avatarHue + 80) % 360}))`,
+            }}
+          >
             <GenderAvatar gender={profile.gender} />
-            <motion.span className="absolute inset-0 rounded-3xl ring-2 ring-white/40"
+            <motion.span
+              className="absolute inset-0 rounded-3xl ring-2 ring-white/40"
               animate={{ scale: [1, 1.1, 1], opacity: [0.6, 0, 0.6] }}
-              transition={{ duration: 2.2, repeat: Infinity }} />
+              transition={{ duration: 2.2, repeat: Infinity }}
+            />
           </motion.div>
           <div className="flex-1 min-w-0">
             <p className="font-display text-2xl font-bold truncate">{profile.name || "You"}</p>
-            <p className="text-sm opacity-80 capitalize">{profile.age} yrs · {profile.gender}</p>
-            <p className="text-xs opacity-80 mt-1">🎯 {profile.goal} · target {profile.targetWeight} kg</p>
+            <p className="text-sm opacity-80 capitalize">
+              {profile.age} yrs · {profile.gender}
+            </p>
+            <p className="text-xs opacity-80 mt-1">
+              🎯 {profile.goal} · target {profile.targetWeight} kg
+            </p>
           </div>
-          <button onClick={() => { setDraft(profile); setEdit(true); }}
-            className="relative z-20 grid h-10 w-10 place-items-center rounded-xl bg-white/20 active:scale-95 cursor-pointer">
+          <button
+            onClick={() => {
+              setDraft(profile);
+              setEdit(true);
+            }}
+            className="relative z-20 grid h-10 w-10 place-items-center rounded-xl bg-white/20 active:scale-95 cursor-pointer"
+          >
             <Edit3 className="h-4 w-4" />
           </button>
         </div>
@@ -91,17 +171,28 @@ function ProfilePage() {
       </motion.div>
 
       {/* Achievements */}
-      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
-        className="rounded-3xl bg-card p-5 shadow-soft">
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="rounded-3xl bg-card p-5 shadow-soft"
+      >
         <div className="flex items-center justify-between mb-3">
-          <p className="font-display font-bold flex items-center gap-2"><Trophy className="h-4 w-4 text-amber-500" /> Achievements</p>
-          <span className="text-xs text-muted-foreground">{achievements.filter((a) => a.unlocked).length}/{achievements.length}</span>
+          <p className="font-display font-bold flex items-center gap-2">
+            <Trophy className="h-4 w-4 text-amber-500" /> Achievements
+          </p>
+          <span className="text-xs text-muted-foreground">
+            {achievements.filter((a) => a.unlocked).length}/{achievements.length}
+          </span>
         </div>
         <div className="grid grid-cols-3 gap-2.5">
           {achievements.map((a, i) => (
-            <motion.div key={a.id}
-              initial={{ opacity: 0, scale: 0.6 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.05, type: "spring" }}
-              className={`relative grid place-items-center rounded-2xl p-3 text-center ${a.unlocked ? a.grad + " text-white shadow-soft" : "bg-secondary text-muted-foreground"}`}>
+            <motion.div
+              key={a.id}
+              initial={{ opacity: 0, scale: 0.6 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: i * 0.05, type: "spring" }}
+              className={`relative grid place-items-center rounded-2xl p-3 text-center ${a.unlocked ? a.grad + " text-white shadow-soft" : "bg-secondary text-muted-foreground"}`}
+            >
               <a.icon className={`h-5 w-5 ${a.unlocked ? "" : "opacity-50"}`} />
               <p className="text-[10px] font-bold mt-1.5 leading-tight">{a.label}</p>
               {!a.unlocked && <p className="text-[9px] opacity-70 mt-0.5">locked</p>}
@@ -111,8 +202,11 @@ function ProfilePage() {
       </motion.div>
 
       {/* Body metrics */}
-      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-        className="rounded-3xl bg-card p-5 shadow-soft space-y-3">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="rounded-3xl bg-card p-5 shadow-soft space-y-3"
+      >
         <h3 className="font-display font-bold">Body metrics</h3>
         <div className="grid grid-cols-2 gap-2">
           <Metric k="Height" v={`${profile.height} cm`} />
@@ -125,8 +219,11 @@ function ProfilePage() {
       </motion.div>
 
       {/* Personal */}
-      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-        className="rounded-3xl bg-card p-5 shadow-soft space-y-2">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="rounded-3xl bg-card p-5 shadow-soft space-y-2"
+      >
         <h3 className="font-display font-bold">Personal details</h3>
         <Row k="Name" v={profile.name || "—"} />
         <Row k="Email" v={profile.email || "—"} />
@@ -136,11 +233,18 @@ function ProfilePage() {
       </motion.div>
 
       {/* Recent journey */}
-      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-        className="rounded-3xl bg-card p-5 shadow-soft">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="rounded-3xl bg-card p-5 shadow-soft"
+      >
         <div className="flex items-center justify-between mb-2">
-          <p className="font-display font-bold flex items-center gap-2"><Calendar className="h-4 w-4" /> Recent journey</p>
-          <Link to="/history" className="text-xs font-bold text-primary flex items-center gap-1">All <ArrowRight className="h-3 w-3" /></Link>
+          <p className="font-display font-bold flex items-center gap-2">
+            <Calendar className="h-4 w-4" /> Recent journey
+          </p>
+          <Link to="/history" className="text-xs font-bold text-primary flex items-center gap-1">
+            All <ArrowRight className="h-3 w-3" />
+          </Link>
         </div>
         {journey.length === 0 ? (
           <p className="text-sm text-muted-foreground text-center py-3">No entries yet.</p>
@@ -150,9 +254,20 @@ function ProfilePage() {
               const c = bmiCategory(j.bmi);
               return (
                 <div key={j.id} className="flex items-center gap-2 text-xs">
-                  <div className="grid place-items-center h-6 w-6 rounded-full bg-secondary text-muted-foreground font-bold">{i + 1}</div>
-                  <span className="text-muted-foreground">{new Date(j.date).toLocaleDateString(undefined, { month: "short", day: "numeric" })}</span>
-                  <span className={`ml-auto rounded-full px-2 py-0.5 text-[10px] font-bold text-white ${c.gradient}`}>{j.bmi}</span>
+                  <div className="grid place-items-center h-6 w-6 rounded-full bg-secondary text-muted-foreground font-bold">
+                    {i + 1}
+                  </div>
+                  <span className="text-muted-foreground">
+                    {new Date(j.date).toLocaleDateString(undefined, {
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </span>
+                  <span
+                    className={`ml-auto rounded-full px-2 py-0.5 text-[10px] font-bold text-white ${c.gradient}`}
+                  >
+                    {j.bmi}
+                  </span>
                   <span className="text-muted-foreground">{j.weight}kg</span>
                 </div>
               );
@@ -163,32 +278,52 @@ function ProfilePage() {
 
       {/* Quick actions */}
       <div className="grid grid-cols-2 gap-3">
-        <Link to="/goals" className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-brand py-3 text-sm font-semibold text-white shadow-glow active:scale-95">
+        <Link
+          to="/goals"
+          className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-brand py-3 text-sm font-semibold text-white shadow-glow active:scale-95"
+        >
           <Target className="h-4 w-4" /> Edit goals
         </Link>
-        <Link to="/calculator" className="flex items-center justify-center gap-2 rounded-2xl bg-secondary py-3 text-sm font-semibold active:scale-95">
+        <Link
+          to="/calculator"
+          className="flex items-center justify-center gap-2 rounded-2xl bg-secondary py-3 text-sm font-semibold active:scale-95"
+        >
           <Sparkles className="h-4 w-4" /> Full calculator
         </Link>
       </div>
 
-      <button onClick={signOut}
-        className="flex w-full items-center justify-center gap-2 rounded-2xl bg-destructive/10 px-4 py-3 text-sm font-semibold text-destructive active:scale-95">
+      <button
+        onClick={signOut}
+        className="flex w-full items-center justify-center gap-2 rounded-2xl bg-destructive/10 px-4 py-3 text-sm font-semibold text-destructive active:scale-95"
+      >
         <LogOut className="h-4 w-4" /> Sign out
       </button>
 
       {/* Edit modal */}
       <AnimatePresence>
         {edit && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             onClick={() => setEdit(false)}
-            className="absolute inset-0 z-50 grid place-items-center bg-black/60 backdrop-blur-sm p-3 overflow-hidden">
-            <motion.div onClick={(e) => e.stopPropagation()}
-              initial={{ scale: 0.6, opacity: 0, y: 40 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.7, opacity: 0, y: 30 }}
+            className="absolute inset-0 z-50 grid place-items-center bg-black/60 backdrop-blur-sm p-3 overflow-hidden"
+          >
+            <motion.div
+              onClick={(e) => e.stopPropagation()}
+              initial={{ scale: 0.6, opacity: 0, y: 40 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.7, opacity: 0, y: 30 }}
               transition={{ type: "spring", stiffness: 240, damping: 20 }}
-              className="w-[85%] rounded-3xl bg-card shadow-2xl max-h-[80vh] overflow-y-auto border-2 border-primary">
+              className="w-[85%] rounded-3xl bg-card shadow-2xl max-h-[80vh] overflow-y-auto border-2 border-primary"
+            >
               <div className="relative bg-gradient-brand p-4 text-white sticky top-0 z-10 rounded-t-3xl">
-                <button onClick={() => setEdit(false)}
-                  className="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-full bg-white/20"><X className="h-4 w-4" /></button>
+                <button
+                  onClick={() => setEdit(false)}
+                  className="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-full bg-white/20"
+                >
+                  <X className="h-4 w-4" />
+                </button>
                 <p className="font-display text-lg font-bold">Edit profile</p>
                 <p className="text-xs opacity-90">Tap save — your changes apply instantly.</p>
               </div>
@@ -196,27 +331,52 @@ function ProfilePage() {
                 <F l="Name" v={draft.name} on={(v: string) => setDraft({ ...draft, name: v })} />
                 <F l="Email" v={draft.email} on={(v: string) => setDraft({ ...draft, email: v })} />
                 <div className="grid grid-cols-2 gap-3">
-                  <F l="Age" type="number" v={String(draft.age)} on={(v: string) => setDraft({ ...draft, age: +v || 0 })} />
+                  <F
+                    l="Age"
+                    type="number"
+                    v={String(draft.age)}
+                    on={(v: string) => setDraft({ ...draft, age: +v || 0 })}
+                  />
                   <div>
                     <label className="text-xs text-muted-foreground font-medium">Gender</label>
                     <div className="mt-1 grid grid-cols-2 gap-2">
                       {(["male", "female"] as const).map((g) => (
-                        <button key={g} onClick={() => setDraft({ ...draft, gender: g })}
-                          className={`rounded-xl py-2 text-xs font-semibold capitalize ${draft.gender === g ? "bg-gradient-brand text-white" : "bg-secondary"}`}>{g}</button>
+                        <button
+                          key={g}
+                          onClick={() => setDraft({ ...draft, gender: g })}
+                          className={`rounded-xl py-2 text-xs font-semibold capitalize ${draft.gender === g ? "bg-gradient-brand text-white" : "bg-secondary"}`}
+                        >
+                          {g}
+                        </button>
                       ))}
                     </div>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
-                  <F l="Height (cm)" type="number" v={String(draft.height)} on={(v: string) => setDraft({ ...draft, height: +v || 0 })} />
-                  <F l="Weight (kg)" type="number" v={String(draft.weight)} on={(v: string) => setDraft({ ...draft, weight: +v || 0 })} />
+                  <F
+                    l="Height (cm)"
+                    type="number"
+                    v={String(draft.height)}
+                    on={(v: string) => setDraft({ ...draft, height: +v || 0 })}
+                  />
+                  <F
+                    l="Weight (kg)"
+                    type="number"
+                    v={String(draft.weight)}
+                    on={(v: string) => setDraft({ ...draft, weight: +v || 0 })}
+                  />
                 </div>
                 <div>
                   <label className="text-xs text-muted-foreground font-medium">Goal</label>
                   <div className="mt-1 grid grid-cols-3 gap-2">
                     {(["lose", "maintain", "gain"] as const).map((g) => (
-                      <button key={g} onClick={() => setDraft({ ...draft, goal: g })}
-                        className={`rounded-xl py-2 text-xs font-semibold capitalize ${draft.goal === g ? "bg-gradient-brand text-white" : "bg-secondary"}`}>{g}</button>
+                      <button
+                        key={g}
+                        onClick={() => setDraft({ ...draft, goal: g })}
+                        className={`rounded-xl py-2 text-xs font-semibold capitalize ${draft.goal === g ? "bg-gradient-brand text-white" : "bg-secondary"}`}
+                      >
+                        {g}
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -224,19 +384,31 @@ function ProfilePage() {
                   <label className="text-xs text-muted-foreground font-medium">Activity</label>
                   <div className="mt-1 grid grid-cols-3 gap-2">
                     {(["low", "moderate", "high"] as const).map((a) => (
-                      <button key={a} onClick={() => setDraft({ ...draft, activityLevel: a })}
-                        className={`rounded-xl py-2 text-xs font-semibold capitalize ${draft.activityLevel === a ? "bg-gradient-brand text-white" : "bg-secondary"}`}>{a}</button>
+                      <button
+                        key={a}
+                        onClick={() => setDraft({ ...draft, activityLevel: a })}
+                        className={`rounded-xl py-2 text-xs font-semibold capitalize ${draft.activityLevel === a ? "bg-gradient-brand text-white" : "bg-secondary"}`}
+                      >
+                        {a}
+                      </button>
                     ))}
                   </div>
                 </div>
                 <div>
                   <label className="text-xs text-muted-foreground font-medium">Avatar color</label>
-                  <input type="range" min={0} max={360} value={draft.avatarHue}
+                  <input
+                    type="range"
+                    min={0}
+                    max={360}
+                    value={draft.avatarHue}
                     onChange={(e) => setDraft({ ...draft, avatarHue: +e.target.value })}
-                    className="w-full mt-1 accent-primary" />
+                    className="w-full mt-1 accent-primary"
+                  />
                 </div>
-                <button onClick={saveEdit}
-                  className="mt-1 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-brand py-3 font-display font-bold text-white shadow-glow">
+                <button
+                  onClick={saveEdit}
+                  className="mt-1 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-brand py-3 font-display font-bold text-white shadow-glow"
+                >
                   <Check className="h-5 w-5" /> Save changes
                 </button>
               </div>
@@ -260,7 +432,12 @@ function Metric({ k, v, accent }: { k: string; v: any; accent?: string }) {
   return (
     <div className="rounded-xl bg-secondary p-3">
       <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">{k}</p>
-      <p className="font-display text-base font-black mt-0.5 capitalize" style={accent ? { color: accent } : undefined}>{v}</p>
+      <p
+        className="font-display text-base font-black mt-0.5 capitalize"
+        style={accent ? { color: accent } : undefined}
+      >
+        {v}
+      </p>
     </div>
   );
 }
@@ -268,8 +445,12 @@ function F({ l, v, on, type = "text" }: any) {
   return (
     <div>
       <label className="text-xs text-muted-foreground font-medium">{l}</label>
-      <input type={type} value={v} onChange={(e) => on(e.target.value)}
-        className="mt-1 w-full rounded-xl bg-secondary px-3 py-2.5 text-sm font-medium outline-none focus:ring-2 focus:ring-primary transition" />
+      <input
+        type={type}
+        value={v}
+        onChange={(e) => on(e.target.value)}
+        className="mt-1 w-full rounded-xl bg-secondary px-3 py-2.5 text-sm font-medium outline-none focus:ring-2 focus:ring-primary transition"
+      />
     </div>
   );
 }
@@ -281,7 +462,11 @@ function GenderAvatar({ gender }: { gender: "male" | "female" }) {
         {/* head */}
         <circle cx="32" cy="20" r="9" fill="white" />
         {/* hair */}
-        <path d="M22 19 C22 11 42 11 42 19 L42 24 L38 22 C38 16 26 16 26 22 L22 24 Z" fill="white" opacity="0.9" />
+        <path
+          d="M22 19 C22 11 42 11 42 19 L42 24 L38 22 C38 16 26 16 26 22 L22 24 Z"
+          fill="white"
+          opacity="0.9"
+        />
         {/* triangle dress body */}
         <path d="M32 28 L50 56 L14 56 Z" fill="white" />
         {/* belt */}
@@ -302,4 +487,3 @@ function GenderAvatar({ gender }: { gender: "male" | "female" }) {
     </svg>
   );
 }
-

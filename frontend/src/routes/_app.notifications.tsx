@@ -30,8 +30,11 @@ function NotificationsPage() {
 
   return (
     <div className="space-y-4">
-      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-        className="rounded-3xl bg-gradient-brand p-5 text-white shadow-glow relative overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="rounded-3xl bg-gradient-brand p-5 text-white shadow-glow relative overflow-hidden"
+      >
         <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/15 blur-2xl" />
         <div className="flex items-center justify-between">
           <div>
@@ -41,8 +44,10 @@ function NotificationsPage() {
           <Bell className="h-10 w-10 opacity-80" />
         </div>
         {unread > 0 && (
-          <button onClick={markAllRead}
-            className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-white/25 px-3 py-1 text-xs font-bold backdrop-blur">
+          <button
+            onClick={markAllRead}
+            className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-white/25 px-3 py-1 text-xs font-bold backdrop-blur"
+          >
             <Check className="h-3.5 w-3.5" /> Mark all read
           </button>
         )}
@@ -59,22 +64,40 @@ function NotificationsPage() {
             {items.map((n, i) => {
               const Icon = iconFor[n.kind];
               return (
-                <motion.button key={n.id} layout
-                  initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30, scale: 0.9 }}
+                <motion.button
+                  key={n.id}
+                  layout
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -30, scale: 0.9 }}
                   transition={{ delay: i * 0.04 }}
                   onClick={() => open(n.id, n.route)}
-                  className={`relative flex w-full items-start gap-3 rounded-2xl p-3 text-left shadow-soft active:scale-[0.98] transition ${n.read ? "bg-card" : "bg-card ring-2 ring-primary/40"}`}>
-                  <div className={`grid h-11 w-11 shrink-0 place-items-center rounded-2xl text-white ${gradFor[n.kind]}`}>
+                  className={`relative flex w-full items-start gap-3 rounded-2xl p-3 text-left shadow-soft active:scale-[0.98] transition ${n.read ? "bg-card" : "bg-card ring-2 ring-primary/40"}`}
+                >
+                  <div
+                    className={`grid h-11 w-11 shrink-0 place-items-center rounded-2xl text-white ${gradFor[n.kind]}`}
+                  >
                     <Icon className="h-5 w-5" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="font-semibold text-sm truncate">{n.title}</p>
                     <p className="text-xs text-muted-foreground line-clamp-2">{n.body}</p>
-                    <p className="text-[10px] text-muted-foreground mt-1">{new Date(n.date).toLocaleString()}</p>
+                    <p className="text-[10px] text-muted-foreground mt-1">
+                      {new Date(n.date).toLocaleString()}
+                    </p>
                   </div>
-                  {!n.read && <span className="absolute right-3 top-3 h-2 w-2 rounded-full bg-gradient-fire animate-pulse" />}
-                  <span onClick={(e) => { e.stopPropagation(); remove(n.id); }}
-                    className="text-[10px] text-muted-foreground self-end px-1">✕</span>
+                  {!n.read && (
+                    <span className="absolute right-3 top-3 h-2 w-2 rounded-full bg-gradient-fire animate-pulse" />
+                  )}
+                  <span
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      remove(n.id);
+                    }}
+                    className="text-[10px] text-muted-foreground self-end px-1"
+                  >
+                    ✕
+                  </span>
                 </motion.button>
               );
             })}

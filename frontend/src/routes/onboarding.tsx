@@ -1,7 +1,26 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { User, UserRound, Ruler, Weight, Cake, Target, ArrowRight, ArrowLeft, Check, Sparkles, Flame, Leaf, TrendingUp, TrendingDown, Minus, Zap, Activity, Heart } from "lucide-react";
+import {
+  User,
+  UserRound,
+  Ruler,
+  Weight,
+  Cake,
+  Target,
+  ArrowRight,
+  ArrowLeft,
+  Check,
+  Sparkles,
+  Flame,
+  Leaf,
+  TrendingUp,
+  TrendingDown,
+  Minus,
+  Zap,
+  Activity,
+  Heart,
+} from "lucide-react";
 import { useProfile, suggestGoalWeight } from "@/lib/bmi-store";
 
 export const Route = createFileRoute("/onboarding")({ component: Onboarding });
@@ -44,8 +63,20 @@ function Onboarding() {
     navigate({ to: "/home" });
   };
 
-  const next = () => { setDir(1); step === steps.length - 1 ? finish() : setStep(step + 1); };
-  const back = () => { if (step > 0) { setDir(-1); setStep(step - 1); } };
+  const next = () => {
+    setDir(1);
+    if (step === steps.length - 1) {
+      finish();
+    } else {
+      setStep(step + 1);
+    }
+  };
+  const back = () => {
+    if (step > 0) {
+      setDir(-1);
+      setStep(step - 1);
+    }
+  };
 
   const Icon = steps[step].icon;
 
@@ -122,7 +153,10 @@ function Onboarding() {
         {/* Progress dots */}
         <div className="mt-4 flex gap-1.5">
           {steps.map((_, i) => (
-            <div key={i} className="h-1.5 flex-1 overflow-hidden rounded-full bg-secondary/60 backdrop-blur">
+            <div
+              key={i}
+              className="h-1.5 flex-1 overflow-hidden rounded-full bg-secondary/60 backdrop-blur"
+            >
               <motion.div
                 initial={false}
                 animate={{ width: i < step ? "100%" : i === step ? "60%" : "0%" }}
@@ -142,7 +176,10 @@ function Onboarding() {
             animate={{ scale: 1, rotate: 0 }}
             transition={{ type: "spring", stiffness: 250, damping: 15 }}
             className="relative grid h-14 w-14 place-items-center rounded-2xl text-white shadow-lg"
-            style={{ background: `linear-gradient(135deg, ${theme.from}, ${theme.to})`, boxShadow: `0 10px 30px -8px ${theme.to}` }}
+            style={{
+              background: `linear-gradient(135deg, ${theme.from}, ${theme.to})`,
+              boxShadow: `0 10px 30px -8px ${theme.to}`,
+            }}
           >
             <Icon className="h-7 w-7" />
             <motion.div
@@ -152,7 +189,10 @@ function Onboarding() {
             />
           </motion.div>
           <div className="flex-1 overflow-hidden">
-            <p className="text-[10px] uppercase tracking-[0.2em] font-bold" style={{ color: theme.from }}>
+            <p
+              className="text-[10px] uppercase tracking-[0.2em] font-bold"
+              style={{ color: theme.from }}
+            >
               Step {step + 1} / {steps.length} · {theme.name}
             </p>
             <motion.h2
@@ -188,10 +228,18 @@ function Onboarding() {
             >
               {step === 0 && (
                 <div className="grid grid-cols-2 gap-3">
-                  {([
-                    { k: "male", label: "Male", Icon: User, from: "#3b82f6", to: "#06b6d4" },
-                    { k: "female", label: "Female", Icon: UserRound, from: "#ec4899", to: "#f43f5e" },
-                  ] as const).map((g) => {
+                  {(
+                    [
+                      { k: "male", label: "Male", Icon: User, from: "#3b82f6", to: "#06b6d4" },
+                      {
+                        k: "female",
+                        label: "Female",
+                        Icon: UserRound,
+                        from: "#ec4899",
+                        to: "#f43f5e",
+                      },
+                    ] as const
+                  ).map((g) => {
                     const active = data.gender === g.k;
                     return (
                       <motion.button
@@ -202,7 +250,11 @@ function Onboarding() {
                         className="relative overflow-hidden rounded-3xl p-6 text-left shadow-soft"
                         style={
                           active
-                            ? { background: `linear-gradient(135deg, ${g.from}, ${g.to})`, color: "white", boxShadow: `0 15px 40px -10px ${g.to}` }
+                            ? {
+                                background: `linear-gradient(135deg, ${g.from}, ${g.to})`,
+                                color: "white",
+                                boxShadow: `0 15px 40px -10px ${g.to}`,
+                              }
                             : { background: "var(--card)" }
                         }
                       >
@@ -231,11 +283,21 @@ function Onboarding() {
               )}
 
               {step === 1 && (
-                <BigNumber value={data.age} onChange={(v) => setData({ ...data, age: v })} min={5} max={100} unit="years" theme={theme} />
+                <BigNumber
+                  value={data.age}
+                  onChange={(v) => setData({ ...data, age: v })}
+                  min={5}
+                  max={100}
+                  unit="years"
+                  theme={theme}
+                />
               )}
 
               {step === 2 && (
-                <div className="relative overflow-hidden rounded-3xl p-6 shadow-soft" style={{ background: `linear-gradient(135deg, ${theme.from}15, ${theme.to}15)` }}>
+                <div
+                  className="relative overflow-hidden rounded-3xl p-6 shadow-soft"
+                  style={{ background: `linear-gradient(135deg, ${theme.from}15, ${theme.to}15)` }}
+                >
                   <div className="absolute inset-0 bg-card/70 backdrop-blur-xl" />
                   <div className="relative">
                     <div className="flex items-end justify-center gap-2">
@@ -244,20 +306,29 @@ function Onboarding() {
                         initial={{ scale: 0.7, opacity: 0.4 }}
                         animate={{ scale: 1, opacity: 1 }}
                         className="font-display text-7xl font-black tabular-nums"
-                        style={{ background: `linear-gradient(135deg, ${theme.from}, ${theme.to})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
+                        style={{
+                          background: `linear-gradient(135deg, ${theme.from}, ${theme.to})`,
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                        }}
                       >
                         {data.height}
                       </motion.span>
                       <span className="pb-3 text-xl font-bold text-muted-foreground">cm</span>
                     </div>
                     <input
-                      type="range" min={120} max={220} value={data.height}
+                      type="range"
+                      min={120}
+                      max={220}
+                      value={data.height}
                       onChange={(e) => setData({ ...data, height: +e.target.value })}
                       className="w-full mt-6"
                       style={{ accentColor: theme.to }}
                     />
                     <div className="flex justify-between text-xs text-muted-foreground font-bold mt-1">
-                      <span>120</span><span>170</span><span>220</span>
+                      <span>120</span>
+                      <span>170</span>
+                      <span>220</span>
                     </div>
                     {/* Height visual */}
                     <div className="mt-5 flex items-end justify-center gap-1 h-16">
@@ -269,7 +340,11 @@ function Onboarding() {
                             key={i}
                             animate={{ height: active ? `${20 + i * 2.5}%` : "20%" }}
                             className="w-1.5 rounded-full"
-                            style={{ background: active ? `linear-gradient(180deg, ${theme.from}, ${theme.to})` : "var(--secondary)" }}
+                            style={{
+                              background: active
+                                ? `linear-gradient(180deg, ${theme.from}, ${theme.to})`
+                                : "var(--secondary)",
+                            }}
                           />
                         );
                       })}
@@ -279,16 +354,46 @@ function Onboarding() {
               )}
 
               {step === 3 && (
-                <BigNumber value={data.weight} onChange={(v) => setData({ ...data, weight: v })} min={20} max={250} unit="kg" theme={theme} />
+                <BigNumber
+                  value={data.weight}
+                  onChange={(v) => setData({ ...data, weight: v })}
+                  min={20}
+                  max={250}
+                  unit="kg"
+                  theme={theme}
+                />
               )}
 
               {step === 4 && (
                 <div className="space-y-3">
-                  {([
-                    { k: "lose", label: "Lose weight", desc: "Burn fat, get lean", Icon: TrendingDown, from: "#f97316", to: "#ef4444" },
-                    { k: "maintain", label: "Stay fit", desc: "Hold steady, feel great", Icon: Minus, from: "#10b981", to: "#22d3ee" },
-                    { k: "gain", label: "Gain weight", desc: "Build muscle, grow strong", Icon: TrendingUp, from: "#6366f1", to: "#8b5cf6" },
-                  ] as const).map((o, idx) => {
+                  {(
+                    [
+                      {
+                        k: "lose",
+                        label: "Lose weight",
+                        desc: "Burn fat, get lean",
+                        Icon: TrendingDown,
+                        from: "#f97316",
+                        to: "#ef4444",
+                      },
+                      {
+                        k: "maintain",
+                        label: "Stay fit",
+                        desc: "Hold steady, feel great",
+                        Icon: Minus,
+                        from: "#10b981",
+                        to: "#22d3ee",
+                      },
+                      {
+                        k: "gain",
+                        label: "Gain weight",
+                        desc: "Build muscle, grow strong",
+                        Icon: TrendingUp,
+                        from: "#6366f1",
+                        to: "#8b5cf6",
+                      },
+                    ] as const
+                  ).map((o, idx) => {
                     const active = data.goal === o.k;
                     return (
                       <motion.button
@@ -302,22 +407,41 @@ function Onboarding() {
                         className="relative flex w-full items-center gap-3 overflow-hidden rounded-2xl p-4 text-left shadow-soft"
                         style={
                           active
-                            ? { background: `linear-gradient(135deg, ${o.from}, ${o.to})`, color: "white", boxShadow: `0 12px 30px -8px ${o.to}` }
+                            ? {
+                                background: `linear-gradient(135deg, ${o.from}, ${o.to})`,
+                                color: "white",
+                                boxShadow: `0 12px 30px -8px ${o.to}`,
+                              }
                             : { background: "var(--card)" }
                         }
                       >
                         <div
                           className="grid h-12 w-12 place-items-center rounded-2xl"
-                          style={active ? { background: "rgba(255,255,255,0.25)" } : { background: `linear-gradient(135deg, ${o.from}30, ${o.to}30)`, color: o.to }}
+                          style={
+                            active
+                              ? { background: "rgba(255,255,255,0.25)" }
+                              : {
+                                  background: `linear-gradient(135deg, ${o.from}30, ${o.to}30)`,
+                                  color: o.to,
+                                }
+                          }
                         >
                           <o.Icon className="h-6 w-6" />
                         </div>
                         <div className="flex-1">
                           <p className="font-display text-lg font-bold leading-tight">{o.label}</p>
-                          <p className={`text-xs ${active ? "text-white/80" : "text-muted-foreground"}`}>{o.desc}</p>
+                          <p
+                            className={`text-xs ${active ? "text-white/80" : "text-muted-foreground"}`}
+                          >
+                            {o.desc}
+                          </p>
                         </div>
                         {active && (
-                          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="grid h-8 w-8 place-items-center rounded-full bg-white/25">
+                          <motion.div
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            className="grid h-8 w-8 place-items-center rounded-full bg-white/25"
+                          >
                             <Check className="h-4 w-4" />
                           </motion.div>
                         )}
@@ -326,13 +450,23 @@ function Onboarding() {
                   })}
 
                   <div className="pt-3">
-                    <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold mb-2">Activity level</p>
+                    <p className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold mb-2">
+                      Activity level
+                    </p>
                     <div className="grid grid-cols-3 gap-2">
-                      {([
-                        { k: "low", label: "Low", Icon: Leaf, from: "#22d3ee", to: "#0ea5e9" },
-                        { k: "moderate", label: "Moderate", Icon: Activity, from: "#f59e0b", to: "#f97316" },
-                        { k: "high", label: "High", Icon: Flame, from: "#ef4444", to: "#ec4899" },
-                      ] as const).map((a) => {
+                      {(
+                        [
+                          { k: "low", label: "Low", Icon: Leaf, from: "#22d3ee", to: "#0ea5e9" },
+                          {
+                            k: "moderate",
+                            label: "Moderate",
+                            Icon: Activity,
+                            from: "#f59e0b",
+                            to: "#f97316",
+                          },
+                          { k: "high", label: "High", Icon: Flame, from: "#ef4444", to: "#ec4899" },
+                        ] as const
+                      ).map((a) => {
                         const active = data.activityLevel === a.k;
                         return (
                           <motion.button
@@ -342,7 +476,11 @@ function Onboarding() {
                             className="flex flex-col items-center gap-1 rounded-2xl py-3 text-xs font-bold transition"
                             style={
                               active
-                                ? { background: `linear-gradient(135deg, ${a.from}, ${a.to})`, color: "white", boxShadow: `0 8px 20px -6px ${a.to}` }
+                                ? {
+                                    background: `linear-gradient(135deg, ${a.from}, ${a.to})`,
+                                    color: "white",
+                                    boxShadow: `0 8px 20px -6px ${a.to}`,
+                                  }
                                 : { background: "var(--secondary)" }
                             }
                           >
@@ -366,7 +504,10 @@ function Onboarding() {
             whileHover={{ scale: 1.02 }}
             onClick={next}
             className="relative flex flex-1 items-center justify-center gap-2 overflow-hidden rounded-2xl py-4 font-display font-bold text-white"
-            style={{ background: `linear-gradient(135deg, ${theme.from}, ${theme.to})`, boxShadow: `0 15px 35px -10px ${theme.to}` }}
+            style={{
+              background: `linear-gradient(135deg, ${theme.from}, ${theme.to})`,
+              boxShadow: `0 15px 35px -10px ${theme.to}`,
+            }}
           >
             <motion.div
               className="absolute inset-0 opacity-30"
@@ -375,7 +516,11 @@ function Onboarding() {
               style={{ background: "linear-gradient(90deg, transparent, white, transparent)" }}
             />
             <span className="relative">{step === steps.length - 1 ? "Let's Go" : "Continue"}</span>
-            {step === steps.length - 1 ? <Zap className="relative h-5 w-5" /> : <ArrowRight className="relative h-5 w-5" />}
+            {step === steps.length - 1 ? (
+              <Zap className="relative h-5 w-5" />
+            ) : (
+              <ArrowRight className="relative h-5 w-5" />
+            )}
           </motion.button>
         </div>
       </div>
@@ -383,10 +528,27 @@ function Onboarding() {
   );
 }
 
-function BigNumber({ value, onChange, min, max, unit, theme }: { value: number; onChange: (v: number) => void; min: number; max: number; unit: string; theme: { from: string; to: string } }) {
+function BigNumber({
+  value,
+  onChange,
+  min,
+  max,
+  unit,
+  theme,
+}: {
+  value: number;
+  onChange: (v: number) => void;
+  min: number;
+  max: number;
+  unit: string;
+  theme: { from: string; to: string };
+}) {
   const ratio = (value - min) / (max - min);
   return (
-    <div className="relative overflow-hidden rounded-3xl p-8 shadow-soft text-center" style={{ background: `linear-gradient(135deg, ${theme.from}10, ${theme.to}10)` }}>
+    <div
+      className="relative overflow-hidden rounded-3xl p-8 shadow-soft text-center"
+      style={{ background: `linear-gradient(135deg, ${theme.from}10, ${theme.to}10)` }}
+    >
       <div className="absolute inset-0 bg-card/70 backdrop-blur-xl" />
       <div className="relative">
         <motion.div
@@ -398,7 +560,11 @@ function BigNumber({ value, onChange, min, max, unit, theme }: { value: number; 
         >
           <span
             className="text-7xl font-black tabular-nums"
-            style={{ background: `linear-gradient(135deg, ${theme.from}, ${theme.to})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
+            style={{
+              background: `linear-gradient(135deg, ${theme.from}, ${theme.to})`,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
           >
             {value}
           </span>
@@ -420,9 +586,14 @@ function BigNumber({ value, onChange, min, max, unit, theme }: { value: number; 
             whileTap={{ scale: 0.9 }}
             onClick={() => onChange(Math.max(min, value - 1))}
             className="grid h-14 w-14 place-items-center rounded-2xl bg-secondary font-display text-2xl font-bold"
-          >−</motion.button>
+          >
+            −
+          </motion.button>
           <input
-            type="range" min={min} max={max} value={value}
+            type="range"
+            min={min}
+            max={max}
+            value={value}
             onChange={(e) => onChange(+e.target.value)}
             className="flex-1"
             style={{ accentColor: theme.to }}
@@ -431,13 +602,20 @@ function BigNumber({ value, onChange, min, max, unit, theme }: { value: number; 
             whileTap={{ scale: 0.9 }}
             onClick={() => onChange(Math.min(max, value + 1))}
             className="grid h-14 w-14 place-items-center rounded-2xl text-white font-display text-2xl font-bold"
-            style={{ background: `linear-gradient(135deg, ${theme.from}, ${theme.to})`, boxShadow: `0 10px 25px -8px ${theme.to}` }}
-          >+</motion.button>
+            style={{
+              background: `linear-gradient(135deg, ${theme.from}, ${theme.to})`,
+              boxShadow: `0 10px 25px -8px ${theme.to}`,
+            }}
+          >
+            +
+          </motion.button>
         </div>
 
         <div className="mt-4 flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
           <Heart className="h-3 w-3" style={{ color: theme.to }} />
-          <span>Range {min} – {max}</span>
+          <span>
+            Range {min} – {max}
+          </span>
         </div>
       </div>
     </div>

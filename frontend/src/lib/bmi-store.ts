@@ -190,18 +190,23 @@ export function useNotifications() {
 
 export function useProfile() {
   const [profile, setProfile] = usePersisted<Profile>(KEYS.profile, defaultProfile);
-  const update = useCallback((p: Partial<Profile>) => {
-    setProfile((prev) => {
-      const next = { ...prev, ...p };
-      try {
-        localStorage.setItem(KEYS.profile, JSON.stringify(next));
-        window.dispatchEvent(new CustomEvent("bmi:profile-updated", { detail: next }));
-      } catch {}
-      return next;
-    });
-  }, [setProfile]);
+  const update = useCallback(
+    (p: Partial<Profile>) => {
+      setProfile((prev) => {
+        const next = { ...prev, ...p };
+        try {
+          localStorage.setItem(KEYS.profile, JSON.stringify(next));
+          window.dispatchEvent(new CustomEvent("bmi:profile-updated", { detail: next }));
+        } catch {}
+        return next;
+      });
+    },
+    [setProfile],
+  );
   useEffect(() => {
-    const onUpd = (e: any) => { if (e?.detail) setProfile(e.detail); };
+    const onUpd = (e: any) => {
+      if (e?.detail) setProfile(e.detail);
+    };
     window.addEventListener("bmi:profile-updated", onUpd);
     return () => window.removeEventListener("bmi:profile-updated", onUpd);
   }, [setProfile]);

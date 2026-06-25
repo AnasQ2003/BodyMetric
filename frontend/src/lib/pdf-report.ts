@@ -20,11 +20,7 @@ const HEX = {
 const catColor = (k: string) =>
   k === "under" ? "#0ea5e9" : k === "healthy" ? HEX.ok : k === "over" ? HEX.warn : HEX.bad;
 
-export function generateBmiReport(opts: {
-  profile: Profile;
-  entries: BmiEntry[];
-  range: Range;
-}) {
+export function generateBmiReport(opts: { profile: Profile; entries: BmiEntry[]; range: Range }) {
   const { profile, entries, range } = opts;
   const filtered = entries
     .filter((e) => {
@@ -52,7 +48,11 @@ export function generateBmiReport(opts: {
   doc.text("BMI Pulse · Health Report", M, 60);
   doc.setFontSize(11);
   doc.setFont("helvetica", "normal");
-  doc.text(`Period: ${range.label} · ${range.from.toDateString()} → ${range.to.toDateString()}`, M, 82);
+  doc.text(
+    `Period: ${range.label} · ${range.from.toDateString()} → ${range.to.toDateString()}`,
+    M,
+    82,
+  );
   doc.text(`Generated: ${new Date().toLocaleString()}`, M, 100);
 
   // ===== Profile card =====
@@ -109,7 +109,8 @@ export function generateBmiReport(opts: {
 
   const bmis = filtered.map((e) => e.bmi);
   const ws = filtered.map((e) => e.weight);
-  const min = Math.min(...bmis), max = Math.max(...bmis);
+  const min = Math.min(...bmis),
+    max = Math.max(...bmis);
   const avg = bmis.reduce((a, b) => a + b, 0) / bmis.length;
   const delta = filtered[filtered.length - 1].bmi - filtered[0].bmi;
   const wDelta = filtered[filtered.length - 1].weight - filtered[0].weight;
@@ -120,7 +121,11 @@ export function generateBmiReport(opts: {
     { k: "Min BMI", v: min.toFixed(1), c: HEX.ok },
     { k: "Max BMI", v: max.toFixed(1), c: HEX.warn },
     { k: "Δ BMI", v: (delta >= 0 ? "+" : "") + delta.toFixed(1), c: delta > 0 ? HEX.warn : HEX.ok },
-    { k: "Δ Weight", v: (wDelta >= 0 ? "+" : "") + wDelta.toFixed(1) + " kg", c: wDelta > 0 ? HEX.warn : HEX.ok },
+    {
+      k: "Δ Weight",
+      v: (wDelta >= 0 ? "+" : "") + wDelta.toFixed(1) + " kg",
+      c: wDelta > 0 ? HEX.warn : HEX.ok,
+    },
   ];
   const cardW = (pageW - M * 2 - 10) / 3;
   cards.forEach((c, i) => {
@@ -147,21 +152,45 @@ export function generateBmiReport(opts: {
 
   const chartW = pageW - M * 2;
   const chartH = 140;
-  drawLineChart(doc, M, y, chartW, chartH, filtered.map((e) => e.bmi), HEX.brand, "BMI");
+  drawLineChart(
+    doc,
+    M,
+    y,
+    chartW,
+    chartH,
+    filtered.map((e) => e.bmi),
+    HEX.brand,
+    "BMI",
+  );
   y += chartH + 16;
 
   // ===== Weight chart =====
-  if (y + 160 > pageH - 40) { doc.addPage(); y = M; }
+  if (y + 160 > pageH - 40) {
+    doc.addPage();
+    y = M;
+  }
   doc.setFont("helvetica", "bold");
   doc.setFontSize(13);
   doc.setTextColor(HEX.ink);
   doc.text("Weight Trend", M, y);
   y += 10;
-  drawLineChart(doc, M, y, chartW, chartH, filtered.map((e) => e.weight), HEX.brand2, "kg");
+  drawLineChart(
+    doc,
+    M,
+    y,
+    chartW,
+    chartH,
+    filtered.map((e) => e.weight),
+    HEX.brand2,
+    "kg",
+  );
   y += chartH + 16;
 
   // ===== Category distribution =====
-  if (y + 120 > pageH - 40) { doc.addPage(); y = M; }
+  if (y + 120 > pageH - 40) {
+    doc.addPage();
+    y = M;
+  }
   doc.setFont("helvetica", "bold");
   doc.setFontSize(13);
   doc.text("Category Distribution", M, y);
@@ -195,7 +224,10 @@ export function generateBmiReport(opts: {
   y += 30;
 
   // ===== Comparison table =====
-  if (y + 60 > pageH - 40) { doc.addPage(); y = M; }
+  if (y + 60 > pageH - 40) {
+    doc.addPage();
+    y = M;
+  }
   doc.setFont("helvetica", "bold");
   doc.setFontSize(13);
   doc.setTextColor(HEX.ink);
@@ -206,7 +238,11 @@ export function generateBmiReport(opts: {
     startY: y + 6,
     head: [["Date", "Weight (kg)", "Height (cm)", "BMI", "Category"]],
     body: filtered.map((e) => [
-      new Date(e.date).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" }),
+      new Date(e.date).toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      }),
       e.weight.toString(),
       e.height.toString(),
       e.bmi.toFixed(1),
@@ -234,19 +270,29 @@ export function generateBmiReport(opts: {
 }
 
 function drawLineChart(
-  doc: jsPDF, x: number, y: number, w: number, h: number,
-  values: number[], color: string, yLabel: string,
+  doc: jsPDF,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  values: number[],
+  color: string,
+  yLabel: string,
 ) {
   doc.setFillColor("#ffffff");
   doc.setDrawColor(HEX.line);
   doc.roundedRect(x, y, w, h, 6, 6, "FD");
   if (!values.length) return;
-  const padL = 40, padR = 12, padT = 14, padB = 24;
+  const padL = 40,
+    padR = 12,
+    padT = 14,
+    padB = 24;
   const innerW = w - padL - padR;
   const innerH = h - padT - padB;
   const min = Math.min(...values) - 0.5;
   const max = Math.max(...values) + 0.5;
-  const sx = (i: number) => x + padL + (values.length === 1 ? innerW / 2 : (i / (values.length - 1)) * innerW);
+  const sx = (i: number) =>
+    x + padL + (values.length === 1 ? innerW / 2 : (i / (values.length - 1)) * innerW);
   const sy = (v: number) => y + padT + innerH - ((v - min) / (max - min || 1)) * innerH;
 
   // grid

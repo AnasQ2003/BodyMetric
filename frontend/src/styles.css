@@ -69,7 +69,12 @@
   --warn: oklch(0.82 0.17 75);
   --danger: oklch(0.65 0.24 25);
 
-  --gradient-brand: linear-gradient(135deg, oklch(0.66 0.22 305) 0%, oklch(0.7 0.22 250) 50%, oklch(0.72 0.2 200) 100%);
+  --gradient-brand: linear-gradient(
+    135deg,
+    oklch(0.66 0.22 305) 0%,
+    oklch(0.7 0.22 250) 50%,
+    oklch(0.72 0.2 200) 100%
+  );
   --gradient-sunset: linear-gradient(135deg, oklch(0.78 0.18 30) 0%, oklch(0.7 0.22 350) 100%);
   --gradient-ocean: linear-gradient(135deg, oklch(0.7 0.18 220) 0%, oklch(0.78 0.16 180) 100%);
   --gradient-mint: linear-gradient(135deg, oklch(0.82 0.16 160) 0%, oklch(0.78 0.18 200) 100%);
@@ -99,17 +104,40 @@
   --ring: oklch(0.72 0.22 295);
 }
 
-* { border-color: var(--border); }
-html, body { background: var(--background); color: var(--foreground); font-family: var(--font-sans); }
+* {
+  border-color: var(--border);
+}
+html,
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
 
-.bg-gradient-brand { background: var(--gradient-brand); }
-.bg-gradient-sunset { background: var(--gradient-sunset); }
-.bg-gradient-ocean { background: var(--gradient-ocean); }
-.bg-gradient-mint { background: var(--gradient-mint); }
-.bg-gradient-fire { background: var(--gradient-fire); }
-.shadow-glow { box-shadow: var(--shadow-glow); }
-.shadow-soft { box-shadow: var(--shadow-soft); }
-.font-display { font-family: var(--font-display); }
+.bg-gradient-brand {
+  background: var(--gradient-brand);
+}
+.bg-gradient-sunset {
+  background: var(--gradient-sunset);
+}
+.bg-gradient-ocean {
+  background: var(--gradient-ocean);
+}
+.bg-gradient-mint {
+  background: var(--gradient-mint);
+}
+.bg-gradient-fire {
+  background: var(--gradient-fire);
+}
+.shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+.font-display {
+  font-family: var(--font-display);
+}
 
 .glass {
   background: color-mix(in oklab, var(--card) 70%, transparent);
@@ -119,27 +147,58 @@ html, body { background: var(--background); color: var(--foreground); font-famil
 }
 
 @keyframes blob {
-  0%, 100% { transform: translate(0,0) scale(1); }
-  33% { transform: translate(30px,-40px) scale(1.1); }
-  66% { transform: translate(-20px,30px) scale(0.95); }
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -40px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 30px) scale(0.95);
+  }
 }
-.animate-blob { animation: blob 14s ease-in-out infinite; }
+.animate-blob {
+  animation: blob 14s ease-in-out infinite;
+}
 
 @keyframes float-y {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
-.animate-float { animation: float-y 4s ease-in-out infinite; }
+.animate-float {
+  animation: float-y 4s ease-in-out infinite;
+}
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 .shimmer {
-  background: linear-gradient(90deg, transparent, color-mix(in oklab, white 30%, transparent), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, white 30%, transparent),
+    transparent
+  );
   background-size: 200% 100%;
   animation: shimmer 2s linear infinite;
 }
 
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-thumb { background: color-mix(in oklab, var(--primary) 50%, transparent); border-radius: 999px; }
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--primary) 50%, transparent);
+  border-radius: 999px;
+}
