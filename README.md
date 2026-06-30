@@ -81,9 +81,7 @@ BodyMetric/
 2. Install [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) and SSMS/sqlcmd.
 
 ### 1. Database Setup
-Execute the SQL migration script located in `backend/database/BodyMetricDB_setup.sql` in your SQL Server instance (e.g. via SSMS). This creates the `BodyMetricDB` database, configures the tables (`Users`, `BmiEntries`, `Activities`, `Notifications`), and seeds a default user:
-- **Email**: `anas@example.com`
-- **Password**: `anas123`
+Execute the SQL migration script located in `backend/database/BodyMetricDB_setup.sql` in your SQL Server instance (e.g. via SSMS). This creates the `BodyMetricDB` database, configures the tables (`Users`, `BmiEntries`, `Activities`, `Notifications`).
 
 ### 2. Backend Setup
 1. Navigate to the backend directory:
