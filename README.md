@@ -126,7 +126,7 @@ Execute the SQL migration script located in `backend/database/BodyMetricDB_setup
 
 ## 📸 Application Screenshot Gallery
 
-Here is the complete sequence of 41 high-definition screenshots detailing every user interaction flow, UI detail, and responsive animation phase.
+Here is the complete sequence of all high-definition screenshots detailing every user interaction flow, UI detail, and responsive animation phase.
 
 ### 🏁 Step 1: Landing, Splash, and Credentials
 | Screenshot | Preview | Description |
