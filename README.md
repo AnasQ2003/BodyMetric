@@ -240,10 +240,12 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 ---
 
 <div align="center">
+  <p>Built with ❤️ by <strong>Anas</strong></p>
+  
+ <div align="center">
 
 Made with 🔥 and a lot of ☕
 
 **⭐ If you found this useful, please star the repository!**
 
 </div>
-
