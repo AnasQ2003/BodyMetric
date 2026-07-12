@@ -1,5 +1,7 @@
 # 🩺 BMI Pulse — Advanced Personal Health & BMI Companion
 
+🎬 **Watch the Demo Video — BodyMetric:** [https://youtu.be/TsdOPMMiHoU](https://youtu.be/TsdOPMMiHoU)
+
 Welcome to **BMI Pulse**, a state-of-the-art, beautifully animated local-first health tracker designed to monitor, log, and analyze your Body Mass Index (BMI), goals, and daily wellness habits. With ambient color schemes that adapt to your health status, interactive charts, cardiorespiratory loggers, and a PDF report generator, BMI Pulse makes wellness gamified and aesthetic.
 
 ---
