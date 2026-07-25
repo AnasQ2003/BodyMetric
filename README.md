@@ -135,73 +135,147 @@ Execute the SQL migration script located in `backend/database/BodyMetricDB_setup
 Here is the complete sequence of all high-definition screenshots detailing every user interaction flow, UI detail, and responsive animation phase.
 
 ### 🏁 Step 1: Landing, Splash, and Credentials
-| Screenshot | Preview | Description |
-|---|---|---|
-| **01** | ![Splash Screen](screenshots/Screenshot%202026-06-24%20095006.png) | Ambient dynamic splash screen with progress loader and orbiting health icons. |
-| **02** | ![Welcome Hub](screenshots/Screenshot%202026-06-24%20095015.png) | Authentication landing page showcasing live logs feed and feature tags. |
-| **03** | ![Sign In Modal](screenshots/Screenshot%202026-06-24%20095022.png) | Interactive login form dialog with glassmorphism header overlay. |
-| **04** | ![Registration Modal](screenshots/Screenshot%202026-06-24%20095029.png) | Account creation dialog including user name validation fields. |
-| **05** | ![Terms of Use](screenshots/Screenshot%202026-06-24%20095037.png) | Health disclaimer and data ownership modal popup. |
+
+<table align="center">
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095006.png" width="100%"/><br/><b>01. Splash Screen</b></td>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095015.png" width="100%"/><br/><b>02. Welcome Hub</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095022.png" width="100%"/><br/><b>03. Sign In Modal</b></td>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095029.png" width="100%"/><br/><b>04. Registration Modal</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095037.png" width="100%"/><br/><b>05. Terms of Use</b></td>
+    <td align="center" width="50%"></td>
+  </tr>
+</table>
+
+---
 
 ### 🧭 Step 2: Interactive User Onboarding Flow
-| Screenshot | Preview | Description |
-|---|---|---|
-| **06** | ![Gender Selection](screenshots/Screenshot%202026-06-24%20095049.png) | Step 1 of onboarding: Identity/gender choice with spring hover effects. |
-| **07** | ![Age Input](screenshots/Screenshot%202026-06-24%20095125.png) | Step 2 of onboarding: Tailoring metric values using age input. |
-| **08** | ![Height Slider](screenshots/Screenshot%202026-06-24%20095133.png) | Step 3 of onboarding: Height slider with dynamic metric gauge visual. |
-| **09** | ![Weight Dial](screenshots/Screenshot%202026-06-24%20095141.png) | Step 4 of onboarding: Weight input selection setup. |
-| **10** | ![Goal & Activity Selection](screenshots/Screenshot%202026-06-24%20095151.png) | Step 5 of onboarding: Fitness goals selection and physical activity toggles. |
+
+<table align="center">
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095049.png" width="100%"/><br/><b>06. Gender Selection</b></td>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095125.png" width="100%"/><br/><b>07. Age Input</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095133.png" width="100%"/><br/><b>08. Height Slider</b></td>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095141.png" width="100%"/><br/><b>09. Weight Dial</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095151.png" width="100%"/><br/><b>10. Goal & Activity Selection</b></td>
+    <td align="center" width="50%"></td>
+  </tr>
+</table>
+
+---
 
 ### 📊 Step 3: Main Dashboard (Home) View
-| Screenshot | Preview | Description |
-|---|---|---|
-| **11** | ![Dashboard View](screenshots/Screenshot%202026-06-24%20095158.png) | Main home view displaying user name, BMI category status, and streak tiles. |
-| **12** | ![Live Health Meter](screenshots/Screenshot%202026-06-24%20095207.png) | Live health status dashboard highlighting target weight gauge meters. |
-| **13** | ![Wellness Tracker Tiles](screenshots/Screenshot%202026-06-24%20095219.png) | Status grid containing Water tracker, Steps metrics, and Sleep logs. |
-| **14** | ![Wellness Quick Stepper](screenshots/Screenshot%202026-06-24%20095225.png) | Inline sliders for real-time local height and weight calculations. |
-| **15** | ![Trend Visualization Charts](screenshots/Screenshot%202026-06-24%20095348.png) | Interactive charts plotting historical BMI scores vs actual bodyweight. |
+
+<table align="center">
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095158.png" width="100%"/><br/><b>11. Dashboard View</b></td>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095207.png" width="100%"/><br/><b>12. Live Health Meter</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095219.png" width="100%"/><br/><b>13. Wellness Tracker Tiles</b></td>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095225.png" width="100%"/><br/><b>14. Wellness Quick Stepper</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095348.png" width="100%"/><br/><b>15. Trend Visualization Charts</b></td>
+    <td align="center" width="50%"></td>
+  </tr>
+</table>
+
+---
 
 ### 📋 Step 4: Full Calculator, Classification, & PDF Exports
-| Screenshot | Preview | Description |
-|---|---|---|
-| **16** | ![Full Calculator](screenshots/Screenshot%202026-06-24%20095400.png) | Extended measurement page with interactive sliders and instant category readout. |
-| **17** | ![Healthy BMI Result](screenshots/Screenshot%202026-06-24%20095406.png) | Result screen displaying healthy classification, ideal ranges, and advice. |
-| **18** | ![Overweight Risk Warning](screenshots/Screenshot%202026-06-24%20095411.png) | Result screen showing alert indicators and medical advisories for warnings. |
-| **19** | ![PDF Report Generation Config](screenshots/Screenshot%202026-06-24%20095418.png) | Config modal to preview time period filter ranges for custom document downloads. |
-| **20** | ![PDF Generation In Progress](screenshots/Screenshot%202026-06-24%20095425.png) | Visual representation of local PDF creation builder task process. |
+
+<table align="center">
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095400.png" width="100%"/><br/><b>16. Full Calculator</b></td>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095406.png" width="100%"/><br/><b>17. Healthy BMI Result</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095411.png" width="100%"/><br/><b>18. Overweight Risk Warning</b></td>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095418.png" width="100%"/><br/><b>19. PDF Report Config</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095425.png" width="100%"/><br/><b>20. PDF Generation Progress</b></td>
+    <td align="center" width="50%"></td>
+  </tr>
+</table>
+
+---
 
 ### 🕰️ Step 5: History Log & Entries Management
-| Screenshot | Preview | Description |
-|---|---|---|
-| **21** | ![History Data Sheet](screenshots/Screenshot%202026-06-24%20095441.png) | Complete data log sheet highlighting all historic records. |
-| **22** | ![Search Filtering](screenshots/Screenshot%202026-06-24%20095452.png) | Filtering list view utilizing instant textual keyword search. |
-| **23** | ![Add Manual Entry](screenshots/Screenshot%202026-06-24%20095458.png) | Form interface allowing manual entry creation with timestamp logs. |
-| **24** | ![Modify Weight Log Entry](screenshots/Screenshot%202026-06-24%20095503.png) | Quick edit dialog allowing users to correct or rewrite existing entries. |
-| **25** | ![Activity Tracker Page](screenshots/Screenshot%202026-06-24%20095515.png) | Exercise logs showing list of sports types, durations, and calories. |
+
+<table align="center">
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095441.png" width="100%"/><br/><b>21. History Data Sheet</b></td>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095452.png" width="100%"/><br/><b>22. Search Filtering</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095458.png" width="100%"/><br/><b>23. Add Manual Entry</b></td>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095503.png" width="100%"/><br/><b>24. Modify Weight Entry</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095515.png" width="100%"/><br/><b>25. Activity Tracker Page</b></td>
+    <td align="center" width="50%"></td>
+  </tr>
+</table>
+
+---
 
 ### 🎯 Step 6: Goal Planners & Wellness Metrics
-| Screenshot | Preview | Description |
-|---|---|---|
-| **26** | ![Fitness Goals Hub](screenshots/Screenshot%202026-06-24%20095523.png) | Targeted planner view displaying calorie caps, target weight, and pacing indexes. |
-| **27** | ![Daily Water Intake Tracker](screenshots/Screenshot%202026-06-24%20095536.png) | Dynamic logger tracking fluid hydration with instant cup additions. |
-| **28** | ![Steps Counter Log](screenshots/Screenshot%202026-06-24%20095543.png) | Visual card layout recording daily footsteps milestone metrics. |
-| **29** | ![Sleep Tracker Logger](screenshots/Screenshot%202026-06-24%20095548.png) | Deep sleep, REM cycle tracking interface, and target goals. |
-| **30** | ![Activity Type Selector](screenshots/Screenshot%202026-06-24%20095554.png) | Category selector representing various sport intensities. |
+
+<table align="center">
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095523.png" width="100%"/><br/><b>26. Fitness Goals Hub</b></td>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095536.png" width="100%"/><br/><b>27. Daily Water Tracker</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095543.png" width="100%"/><br/><b>28. Steps Counter Log</b></td>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095548.png" width="100%"/><br/><b>29. Sleep Tracker Logger</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095554.png" width="100%"/><br/><b>30. Activity Type Selector</b></td>
+    <td align="center" width="50%"></td>
+  </tr>
+</table>
+
+---
 
 ### 💡 Step 7: Advice, Customization, Alerts & Notifications
-| Screenshot | Preview | Description |
-|---|---|---|
-| **31** | ![Cardio Energy Chart](screenshots/Screenshot%202026-06-24%20095606.png) | Live bar charts displaying daily physical output. |
-| **32** | ![Health Advice Center](screenshots/Screenshot%202026-06-24%20095615.png) | Lifestyle tips feed customized to the user's active health category. |
-| **33** | ![Category Diet Guides](screenshots/Screenshot%202026-06-24%20095632.png) | Detailed nutritional recommendations and menus. |
-| **34** | ![Target-Specific Exercises](screenshots/Screenshot%202026-06-24%20095638.png) | Curated workout regimes suitable for selected goals. |
-| **35** | ![Settings Panel Page](screenshots/Screenshot%202026-06-24%20095644.png) | Global settings panel containing profile edit actions and data backup options. |
-| **36** | ![Interactive Menu Drawer](screenshots/Screenshot%202026-06-24%20095659.png) | Smooth spring menu drawer representing primary links across modules. |
-| **37** | ![Avatar Hue Customizer](screenshots/Screenshot%202026-06-24%20095712.png) | Sliders setting color tint and profile design features. |
-| **38** | ![Profile Update Success Dialog](screenshots/Screenshot%202026-06-24%20095717.png) | Validation toast indicating successful updates to local database records. |
-| **39** | ![Notifications History Page](screenshots/Screenshot%202026-06-24%20095735.png) | Structured list tracking read, unread, and custom reminders. |
-| **40** | ![Clean Storage Toggles](screenshots/Screenshot%202026-06-24%20095752.png) | Safe dialog options checking before purging user application database cache. |
-| **41** | ![Storage Clean Success Alert](screenshots/Screenshot%202026-06-24%20095757.png) | Final message showing successful memory clearing. |
+
+<table align="center">
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095606.png" width="100%"/><br/><b>31. Cardio Energy Chart</b></td>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095615.png" width="100%"/><br/><b>32. Health Advice Center</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095632.png" width="100%"/><br/><b>33. Category Diet Guides</b></td>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095638.png" width="100%"/><br/><b>34. Target Exercises</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095644.png" width="100%"/><br/><b>35. Settings Panel Page</b></td>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095659.png" width="100%"/><br/><b>36. Menu Drawer</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095712.png" width="100%"/><br/><b>37. Avatar Hue Customizer</b></td>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095717.png" width="100%"/><br/><b>38. Profile Update Toast</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095735.png" width="100%"/><br/><b>39. Notifications History</b></td>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095752.png" width="100%"/><br/><b>40. Storage Toggles Dialog</b></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="screenshots/Screenshot%202026-06-24%20095757.png" width="100%"/><br/><b>41. Storage Clean Alert</b></td>
+    <td align="center" width="50%"></td>
+  </tr>
+</table>
 
 ---
 
