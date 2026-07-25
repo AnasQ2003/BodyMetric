@@ -136,7 +136,7 @@ Execute the SQL migration script located in `backend/database/BodyMetricDB_setup
    ```bash
    npm run dev
    ```
-4. Open [http://localhost:3000](http://localhost:3000) in your browser. Note that the layout is optimised as a premium mobile app simulator.
+4. Open in your browser. Note that the layout is optimised as a premium mobile app simulator.
 
 ---
 
