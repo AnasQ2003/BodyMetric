@@ -5,6 +5,16 @@
 🎬 **Watch the Demo Video — BodyMetric:** [https://youtu.be/TsdOPMMiHoU](https://youtu.be/TsdOPMMiHoU)
 
 </div>
+<br />
+
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white&style=flat-square)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white&style=flat-square)](https://typescriptlang.org)
+[![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white&style=flat-square)](https://vitejs.dev)
+[![Node.js](https://img.shields.io/badge/Node.js-Express-339933?logo=node.js&logoColor=white&style=flat-square)](https://nodejs.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white&style=flat-square)](https://tailwindcss.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+
+<br />
 
 Welcome to **BMI Pulse**, a state-of-the-art, beautifully animated local-first health tracker designed to monitor, log, and analyze your Body Mass Index (BMI), goals, and daily wellness habits. With ambient color schemes that adapt to your health status, interactive charts, cardiorespiratory loggers, and a PDF report generator, BMI Pulse makes wellness gamified and aesthetic.
 
@@ -294,7 +304,7 @@ We have conducted a thorough code inspection and cleanup of the project:
 ```
 MIT License
 
-Copyright (c) BodyMetric --- 2026 AnasQ2003
+Copyright (c) BodyMetric --- 2026 AnasQ2003🩺
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
